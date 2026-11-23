@@ -2,9 +2,8 @@ name: Démonstration en ligne (GitHub Pages)
 
 # À chaque envoi sur main : tests, construction de la version de démonstration, mise en ligne sur GitHub Pages.
 # Version de démonstration : formulaires sans envoi, agenda de démonstration, pages non indexées par Google.
+# Lancement à la main seulement (onglet Actions > « Run workflow ») : la mise en ligne réelle est deploiement.yml.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

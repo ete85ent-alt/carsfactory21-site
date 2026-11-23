@@ -1,0 +1,65 @@
+name: Deploiement sur OVHcloud
+
+# À chaque envoi sur main : tests, construction du vrai site, puis envoi de dist/ dans www/ chez OVH (SFTP).
+# Secrets à créer dans le dépôt (Settings > Secrets and variables > Actions) : FTP_SERVER, FTP_USERNAME, FTP_PASSWORD.
+# Tant qu'ils n'existent pas, tout est testé mais rien n'est envoyé.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Un seul déploiement à la fois : un envoi plus ancien ne peut plus écraser le plus récent
+concurrency:
+  group: deploiement
+  cancel-in-progress: false
+
+jobs:
+  deploiement:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      - name: Tests automatiques
+        run: npm test
+
+      - run: npm run build
+
+      # Parcours du site complet dans un vrai navigateur (ordinateur + téléphone) : une erreur bloque la mise en ligne
+      - name: Tests du site complet
+        run: |
+          npx playwright install --with-deps chromium > /dev/null
+          npm run test:site
+
+      # Un fichier PHP avec une erreur de syntaxe bloque le déploiement au lieu de casser le formulaire
+      - name: Verification des fichiers PHP
+        run: find public/api -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      # SFTP : identifiants chiffrés (OVH n'accepte pas le FTPS)
+      - name: Envoi du site en SFTP
+        env:
+          HOTE: ${{ secrets.FTP_SERVER }}
+          UTILISATEUR: ${{ secrets.FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          if [ -z "$HOTE" ] || [ -z "$UTILISATEUR" ] || [ -z "$LFTP_PASSWORD" ]; then
+            echo "::warning::Secrets FTP_SERVER / FTP_USERNAME / FTP_PASSWORD absents : site testé mais pas envoyé chez OVH."
+            exit 0
+          fi
+          sudo apt-get install -y -qq lftp > /dev/null
+          mkdir -p ~/.ssh
+          ssh-keyscan -p 22 "$HOTE" >> ~/.ssh/known_hosts 2> /dev/null
+          # L'envoi ajoute et remplace mais ne supprime pas (sauf assets/) : un fichier retiré doit être supprimé à la main
+          lftp -c "
+            set net:max-retries 2; set net:timeout 30;
+            open --env-password -u \"$UTILISATEUR\" sftp://$HOTE:22;
+            mirror --reverse --exclude-glob assets/ --exclude-glob videos/ --verbose=1 dist/ www/;
+            mirror --reverse --delete --verbose=1 dist/assets/ www/assets/;
+            # Vidéo de présentation : renvoyée seulement si sa taille change
+            mirror --reverse --ignore-time --verbose=1 dist/videos/ www/videos/
+          "
