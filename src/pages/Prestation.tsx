@@ -28,7 +28,7 @@ export default function Prestation({ chemin }: { chemin: string }) {
       <Header />
       <main>
         <section className="relative isolate overflow-hidden bg-noir text-white">
-          <Photo nom={p.icone as NomPhoto} alt={p.nom} prioritaire mention={false} className="absolute inset-0 -z-10 h-full w-full" />
+          <Photo nom={(p.photo ?? p.icone) as NomPhoto} alt={p.nom} prioritaire mention={false} className="absolute inset-0 -z-10 h-full w-full" />
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-noir via-noir/85 to-noir/35" />
           <Container className="flex min-h-[520px] flex-col justify-center gap-6 py-16">
             <nav aria-label="Fil d’Ariane" className="text-[14px] text-white/60"><a href={vers('/')} className="text-white/60 no-underline hover:text-white">Accueil</a> <span aria-hidden="true">/</span> {p.famille} <span aria-hidden="true">/</span> <span className="text-white">{p.nom}</span></nav>
@@ -39,7 +39,7 @@ export default function Prestation({ chemin }: { chemin: string }) {
               <a href={appeler} className={btnClair}><Ico nom="telephone" taille={18} />Appeler le garage</a>
             </div>
           </Container>
-          {!photoReelle(p.icone as NomPhoto) && <span className="absolute bottom-3 right-3 text-[11px] text-white/50">Photo non contractuelle</span>}
+          {!photoReelle((p.photo ?? p.icone) as NomPhoto) && <span className="absolute bottom-3 right-3 text-[11px] text-white/50">Photo non contractuelle</span>}
         </section>
 
         <section>

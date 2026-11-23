@@ -21,7 +21,7 @@ function donneesGarage() {
   const d: Record<string, unknown> = {
     '@context': 'https://schema.org', '@type': 'AutoRepair', '@id': `${site.siteUrl}/#garage`,
     name: site.nom, url: `${site.siteUrl}/`, image: `${site.siteUrl}/photos/atelier-1920.webp`,
-    description: 'Carrosserie, peinture, covering, réparation après sinistre, mécanique, entretien, diagnostic et dépannage 24 h/24 à Saint-Apollinaire, près de Dijon.',
+    description: 'Carrosserie, peinture, covering, réparation après sinistre, mécanique, entretien, diagnostic, dépannage 24 h/24, flottes de véhicules d’entreprise et remise en état avant retour de leasing, à Saint-Apollinaire, près de Dijon.',
     telephone: site.telephoneLien,
     geo: { '@type': 'GeoCoordinates', latitude: accueil.lat, longitude: accueil.lon },
     address: { '@type': 'PostalAddress', streetAddress: site.adresse.rue, postalCode: site.adresse.codePostal, addressLocality: site.adresse.ville, addressRegion: 'Bourgogne-Franche-Comté', addressCountry: 'FR' },
@@ -49,7 +49,7 @@ const VIDEO = {
 function Tuile({ p }: { p: PagePrestation }) {
   return (
     <a href={vers(p.chemin)} className="group flex min-h-[92px] overflow-hidden rounded-xl border border-ligne bg-white text-noir no-underline shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-shadow hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] sm:flex-col">
-      <Photo nom={p.icone as NomPhoto} alt="" sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 112px" className="w-28 shrink-0 sm:aspect-[16/10] sm:w-auto" />
+      <Photo nom={(p.photo ?? p.icone) as NomPhoto} alt="" sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 112px" className="w-28 shrink-0 sm:aspect-[16/10] sm:w-auto" />
       <div className="flex flex-1 items-center gap-3 p-3.5 sm:flex-col sm:items-start sm:gap-1.5 sm:p-4">
         <div className="flex-1">
           <h3 className="flex items-center gap-2 text-[21px] font-bold uppercase leading-none sm:text-[24px]"><Ico nom={p.icone} taille={20} className="hidden shrink-0 text-rouge sm:block" />{p.nom}</h3>
@@ -61,6 +61,16 @@ function Tuile({ p }: { p: PagePrestation }) {
     </a>
   )
 }
+
+/** Points forts du garage, mis en avant juste sous l'accroche. */
+const POINTS_FORTS: { icone: Parameters<typeof Ico>[0]['nom']; titre: string; texte: string; lien: string }[] = [
+  { icone: 'euro', titre: 'Franchise prise en charge', texte: 'Jusqu’à 450 € de votre franchise pris en charge, selon les dossiers.', lien: '/reparation-apres-sinistre' },
+  { icone: 'cle', titre: 'Clé en main', texte: 'Vous nous confiez la voiture, on s’occupe de tout : devis, assurance, réparation, restitution.', lien: '/#devis' },
+  { icone: 'flotte', titre: 'Entreprises', texte: 'On s’occupe de votre flotte de véhicules : mécanique, suivi des réparations, entretien.', lien: '/entretien-flotte-entreprise' },
+  { icone: 'leasing', titre: 'Retour de leasing', texte: 'Les réparations faites avant de rendre la voiture au loueur.', lien: '/reparation-retour-leasing' },
+  { icone: 'depannage', titre: 'Dépannage 24 h/24', texte: 'Panne ou accident : on vient vous chercher, jour et nuit, 7 j/7.', lien: '/#depannage' },
+  { icone: 'coche', titre: '20 ans d’expérience', texte: 'Un carrossier formé chez Airbus et Peugeot, exigeant sur la qualité.', lien: '/#garage' },
+]
 
 const ETAPES: [string, string][] = [
   ['Devis', 'Par téléphone, à l’accueil ou en ligne avec des photos.'],
@@ -74,6 +84,8 @@ const FAQ: [string, string][] = [
   ['Où dois-je déposer ma voiture ?', 'À notre accueil, 6 rue de Bastogne à Saint-Apollinaire, près des commerces et des transports en commun.'],
   ['Quels sont les horaires du garage ?', 'Le garage est ouvert du mardi au samedi, de 9 h à 19 h. Il est fermé le lundi et le dimanche. Le dépannage fonctionne 24 h/24, 7 j/7.'],
   ['Le garage s’occupe-t-il des démarches avec mon assurance ?', 'Le garage vous aide à préparer votre dossier et à présenter le véhicule à l’expert si votre assurance en mandate un.'],
+  ['Prenez-vous en charge la franchise ?', 'Selon les dossiers, le garage peut prendre en charge votre franchise jusqu’à 450 €. Demandez-le lors de votre devis.'],
+  ['Vous occupez-vous des véhicules d’entreprise ?', 'Oui : on s’occupe de votre flotte de véhicules (mécanique, suivi des réparations, entretien, dépannage), avec un seul interlocuteur, ainsi que la remise en état avant le retour de leasing.'],
   ['Faut-il prendre rendez-vous ?', 'Non : on vous accueille sans rendez-vous, du mardi au samedi de 9 h à 19 h, à notre accueil de Saint-Apollinaire. Vous pouvez aussi réserver un créneau en ligne si vous préférez.'],
 ]
 
@@ -97,9 +109,9 @@ export default function Accueil() {
               <div className="order-2 flex max-w-[820px] flex-col gap-2">
                 <p className="font-titre text-[15px] font-bold uppercase tracking-wide text-rouge-vif md:text-[18px]">Notre engagement</p>
                 <h1 className="text-[28px] font-bold uppercase leading-[1.02] md:text-[44px]">
-                  Une réparation de qualité, un accompagnement personnalisé et <span className="text-rouge-vif">zéro franchise</span> à votre charge
+                  Une réparation de qualité, un accompagnement clé en main et <span className="text-rouge-vif">jusqu’à 450 € de franchise</span> pris en charge
                 </h1>
-                <p className="text-[14px] text-white/70 md:text-[15px]">Selon les conditions applicables.</p>
+                <p className="text-[14px] text-white/70 md:text-[15px]">Selon les dossiers.</p>
               </div>
               <div className="order-5 hidden gap-3 sm:flex">
                 <a href="#devis" className={btnRouge}>Demander un devis</a>
@@ -138,6 +150,26 @@ export default function Accueil() {
             <a href="#rdv" className={tuileAction}>
               <Ico nom="calendrier" taille={28} className="text-rouge" /><span className="text-[17px] font-bold leading-tight">Prendre rendez-vous</span><span className="hidden text-[13px] text-gris sm:block">Choisissez le jour et l’heure</span>
             </a>
+          </Container>
+        </section>
+
+        {/* ── Points forts, juste sous les tuiles d'action ── */}
+        <section id="points-forts" aria-labelledby="titre-points-forts" className="scroll-mt-32">
+          <Container className="flex flex-col gap-4 pt-10 md:gap-6 md:pt-16">
+            <h2 id="titre-points-forts" className="text-[30px] font-bold uppercase leading-none md:text-[44px]">Nos points forts</h2>
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {POINTS_FORTS.map((f) => (
+                <li key={f.titre}>
+                  <a href={vers(f.lien)} className="flex h-full items-start gap-3.5 rounded-xl border border-ligne border-t-[3px] border-t-rouge bg-white p-4 text-noir no-underline transition-shadow hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] md:p-5">
+                    <Ico nom={f.icone} taille={28} className="mt-0.5 shrink-0 text-rouge" />
+                    <span className="flex flex-col gap-1">
+                      <span className="font-titre text-[21px] font-bold uppercase leading-none md:text-[23px]">{f.titre}</span>
+                      <span className="text-[14px] leading-snug text-gris md:text-[15px]">{f.texte}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </Container>
         </section>
 

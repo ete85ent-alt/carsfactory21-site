@@ -4,7 +4,7 @@
  * Chaque page est pré-rendue (routes.tsx) et apparaît dans le plan du site.
  */
 
-export type Icone = 'carrosserie' | 'peinture' | 'sinistre' | 'mecanique' | 'entretien' | 'diagnostic' | 'covering' | 'depannage'
+export type Icone = 'carrosserie' | 'peinture' | 'sinistre' | 'mecanique' | 'entretien' | 'diagnostic' | 'covering' | 'depannage' | 'flotte' | 'leasing'
 
 export type PagePrestation = {
   chemin: string
@@ -12,6 +12,7 @@ export type PagePrestation = {
   nom: string
   resume: string                  // une ligne (grille de l'accueil)
   icone: Icone
+  photo?: string                  // photo de la tuile et de la page (par défaut : celle de l'icône)
   titre: string                   // <title> pour Google (≤ 60 caractères)
   description: string             // 70 à 160 caractères
   h1: string
@@ -54,9 +55,9 @@ export const PRESTATIONS: PagePrestation[] = [
     description: 'Accident, grêle, vandalisme : réparation de votre véhicule et aide pour les démarches avec votre assurance. Cars Factory 21 à Saint-Apollinaire.',
     h1: 'Réparation après un sinistre',
     accroche: 'Après un accident ou des dégâts, les démarches paraissent longues. L’atelier répare votre véhicule et vous aide à constituer le dossier pour votre assureur.',
-    interventions: ['Réparations après accident', 'Dégâts de grêle', 'Vandalisme et effraction', 'Bris d’éléments de carrosserie', 'Préparation du passage de l’expert'],
+    interventions: ['Réparations après accident', 'Dégâts de grêle', 'Vandalisme et effraction', 'Bris d’éléments de carrosserie', 'Préparation du passage de l’expert', 'Prise en charge de votre franchise jusqu’à 450 €, selon les dossiers'],
     deroulement: [['Déclaration', 'Vous déclarez le sinistre à votre assurance ; l’atelier vous aide à préparer les photos et informations.'], ['Expertise', 'Le véhicule est présenté à l’expert mandaté par l’assurance si besoin.'], ['Réparation', 'Les travaux validés sont réalisés, puis le véhicule vous est rendu.']],
-    faq: [['Suis-je libre de choisir mon garage ?', 'Oui, en règle générale vous pouvez choisir le réparateur de votre choix. Vérifiez les conditions de votre contrat.'], ['Qui paie la franchise ?', 'Elle dépend de votre contrat d’assurance et des circonstances du sinistre : votre assureur vous l’indique.']],
+    faq: [['Suis-je libre de choisir mon garage ?', 'Oui, en règle générale vous pouvez choisir le réparateur de votre choix. Vérifiez les conditions de votre contrat.'], ['Qui paie la franchise ?', 'Elle dépend de votre contrat d’assurance. Selon les dossiers, le garage peut prendre en charge votre franchise jusqu’à 450 € : demandez-le lors du devis.']],
     liees: ['/carrosserie', '/peinture-automobile'],
   },
   {
@@ -118,6 +119,30 @@ export const PRESTATIONS: PagePrestation[] = [
     deroulement: [['Vous appelez', 'Indiquez où vous êtes, le modèle de votre voiture et ce qui s’est passé.'], ['Remorquage', 'Le véhicule est chargé et conduit au garage.'], ['Diagnostic et devis', 'La panne est recherchée ; vous validez le devis avant la réparation.']],
     faq: [['Que faire en attendant la dépanneuse ?', 'Mettez-vous en sécurité : gilet jaune, triangle de signalisation, et restez derrière la glissière sur une voie rapide.'], ['Mon assurance prend-elle en charge le dépannage ?', 'Beaucoup de contrats incluent une assistance : vérifiez le vôtre ou appelez votre assureur.']],
     liees: ['/reparation-apres-sinistre', '/mecanique-generale'],
+  },
+  {
+    chemin: '/entretien-flotte-entreprise', famille: 'Services', icone: 'flotte', photo: 'entretien',
+    nom: 'Flotte d’entreprise', resume: 'Mécanique, suivi des réparations et entretien de vos véhicules.',
+    titre: 'Flotte auto d’entreprise près de Dijon | Cars Factory 21',
+    description: 'Entreprises : on s’occupe de votre flotte de véhicules, mécanique, suivi des réparations, entretien et dépannage. Cars Factory 21, Saint-Apollinaire.',
+    h1: 'On s’occupe de votre flotte de véhicules',
+    accroche: 'Artisans, PME, commerciaux : vos véhicules de société sont entretenus et réparés au même endroit, avec un seul interlocuteur pour toute la flotte.',
+    interventions: ['Mécanique et diagnostic', 'Suivi des réparations, véhicule par véhicule', 'Entretien et vidanges de toute la flotte', 'Carrosserie et peinture après un sinistre', 'Dépannage 24 h/24 de vos véhicules', 'Remise en état avant le retour de leasing', '[Facturation et suivi par véhicule : à confirmer avec le garage]'],
+    deroulement: [['Premier contact', 'Vous présentez votre parc : nombre de véhicules, modèles, besoins.'], ['Organisation', 'Les interventions sont planifiées pour limiter l’immobilisation de vos véhicules.'], ['Suivi', 'Chaque intervention vous est expliquée, véhicule par véhicule.']],
+    faq: [['À partir de combien de véhicules ?', '[À confirmer avec le garage.]'], ['Vous occupez-vous des véhicules en leasing ?', 'Oui : entretien pendant le contrat et remise en état avant la restitution au loueur.']],
+    liees: ['/reparation-retour-leasing', '/entretien-vidange'],
+  },
+  {
+    chemin: '/reparation-retour-leasing', famille: 'Services', icone: 'leasing', photo: 'carrosserie',
+    nom: 'Retour de leasing', resume: 'Remise en état avant de rendre la voiture au loueur.',
+    titre: 'Réparation avant retour de leasing | Cars Factory 21',
+    description: 'LLD ou LOA : rayures, bosses, pare-chocs et peinture réparés avant la restitution, pour rendre une voiture en bon état. Cars Factory 21, près de Dijon.',
+    h1: 'Réparations avant le retour de leasing',
+    accroche: 'À la fin d’une location longue durée (LLD) ou d’une LOA, le loueur relève chaque dégât à la restitution. Faire réparer avant permet de rendre une voiture en bon état et d’éviter les mauvaises surprises.',
+    interventions: ['Rayures, bosses et éclats de carrosserie', 'Pare-chocs, rétroviseurs et optiques', 'Retouches et raccords de peinture', 'Jantes rayées [à confirmer avec le garage]', 'Contrôle de l’état du véhicule avant la restitution'],
+    deroulement: [['État des lieux', 'Vous montrez la voiture ou envoyez des photos : les dégâts que le loueur pourrait relever sont listés.'], ['Devis', 'Vous choisissez les réparations à faire.'], ['Remise en état', 'La voiture est prête pour la restitution.']],
+    faq: [['Quand faut-il venir ?', 'Idéalement quelques semaines avant la date de restitution, pour avoir le temps de réparer.'], ['Est-ce moins cher que les frais du loueur ?', 'Cela dépend des dégâts et du barème de votre loueur : comparez le devis avec les frais prévus dans votre contrat.']],
+    liees: ['/carrosserie', '/entretien-flotte-entreprise'],
   },
 ]
 

@@ -9,11 +9,13 @@ export type Resultat = { nom: string; chemin: string; detail: string }
 const MOTS_CLES: Record<string, string[]> = {
   '/carrosserie': ['bosse', 'choc', 'rayure', 'pare-chocs', 'parechoc', 'aile', 'portiere', 'retroviseur', 'accrochage', 'carrosserie', 'capot', 'optique', 'phare'],
   '/peinture-automobile': ['peinture', 'teinte', 'vernis', 'polissage', 'rayure', 'couleur', 'eclat'],
-  '/reparation-apres-sinistre': ['accident', 'sinistre', 'assurance', 'grele', 'expert', 'vandalisme', 'franchise', 'constat'],
+  '/reparation-apres-sinistre': ['accident', 'sinistre', 'assurance', 'grele', 'expert', 'vandalisme', 'franchise', 'constat', 'cle en main'],
   '/covering': ['covering', 'film', 'wrapping', 'mat', 'satine', 'marquage', 'changer de couleur'],
   '/mecanique-generale': ['frein', 'plaquette', 'disque', 'embrayage', 'distribution', 'courroie', 'amortisseur', 'suspension', 'echappement', 'batterie', 'demarrage', 'bruit', 'mecanique'],
   '/entretien-vidange': ['vidange', 'huile', 'filtre', 'revision', 'entretien', 'controle technique', 'niveau', 'carnet'],
   '/diagnostic-automobile': ['voyant', 'diagnostic', 'valise', 'code defaut', 'moteur', 'capteur', 'mode degrade', 'airbag', 'abs', 'perte de puissance'],
+  '/entretien-flotte-entreprise': ['flotte', 'entreprise', 'societe', 'parc', 'vehicule de societe', 'professionnel', 'utilitaire', 'commercial'],
+  '/reparation-retour-leasing': ['leasing', 'lld', 'loa', 'location', 'restitution', 'loueur', 'fin de contrat', 'rendre la voiture'],
   '/depannage-auto': ['depannage', 'remorquage', 'panne', 'depanneuse', 'urgence', 'nuit', '24h', 'ne demarre pas', 'en panne'],
 }
 
