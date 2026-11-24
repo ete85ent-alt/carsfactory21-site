@@ -173,6 +173,41 @@ export default function Accueil() {
           </Container>
         </section>
 
+        {/* ── Ils nous font confiance : logos (ou noms) des entreprises clientes, puis photos ;
+             les emplacements libres n'apparaissent que sur la démonstration ── */}
+        {(DEMO || site.references.some((r) => r.nom)) && (
+          <section id="references" aria-labelledby="titre-references" className="scroll-mt-32">
+            <Container className="flex flex-col gap-4 pt-10 md:gap-6 md:pt-16">
+              <h2 id="titre-references" className="text-[30px] font-bold uppercase leading-none md:text-[44px]">Ils nous font confiance</h2>
+              <ul className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+                {site.references.filter((r) => DEMO || r.nom).map((r, i) => (
+                  <li key={r.nom || `libre-${i}`} className={`flex h-24 items-center justify-center rounded-xl p-4 md:h-28 ${r.nom ? 'border border-ligne bg-white' : 'border-2 border-dashed border-ligne bg-fond'}`}>
+                    {r.logo ? <img src={vers(r.logo)} alt={r.nom} loading="lazy" className="max-h-full max-w-full object-contain" />
+                      : r.nom ? <span className="font-titre text-[28px] font-bold uppercase tracking-wide text-noir md:text-[34px]">{r.nom}</span>
+                      : <span className="text-[13px] text-gris">Logo à ajouter</span>}
+                  </li>
+                ))}
+              </ul>
+              {(DEMO || site.photosReferences.some(([f]) => f)) && (
+                <ul className="grid gap-3 sm:grid-cols-3">
+                  {site.photosReferences.filter(([f]) => DEMO || f).map(([f, legende], i) => (
+                    <li key={f || `photo-${i}`}>
+                      {f ? (
+                        <figure className="m-0 overflow-hidden rounded-xl border border-ligne">
+                          <img src={vers(f)} alt={legende} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                          {legende && <figcaption className="px-3 py-2 text-[13px] text-gris">{legende}</figcaption>}
+                        </figure>
+                      ) : (
+                        <div className="flex aspect-[4/3] items-center justify-center rounded-xl border-2 border-dashed border-ligne bg-fond text-[13px] text-gris">Photo à ajouter</div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </Container>
+          </section>
+        )}
+
         {/* ── Mon parcours (qui sommes-nous), juste sous l'accroche ── */}
         {montrer(PRESENTATION) && (
           <section id="garage" className="scroll-mt-32">

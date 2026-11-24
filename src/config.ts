@@ -51,6 +51,22 @@ export const site = {
     ['Devis gratuit', 'Envoyez des photos : une première estimation sans vous déplacer.'],
     ['Prix annoncé avant travaux', 'Aucun travail supplémentaire sans votre accord.'],
   ] as [string, string][],
+  // « Ils nous font confiance » (accueil) : entreprises clientes.
+  // logo : fichier déposé dans public/references/ (ex. '/references/eiffage.svg'), avec l'accord de l'entreprise ;
+  // vide = le nom est écrit en lettres. nom vide = emplacement libre, visible seulement sur la démonstration.
+  references: [
+    { nom: 'Eiffage', logo: '' },
+    { nom: 'Colas', logo: '' },
+    { nom: '', logo: '' },
+    { nom: '', logo: '' },
+  ] as { nom: string; logo: string }[],
+  // Photos de véhicules d'entreprises clientes : [fichier dans public/references/, légende].
+  // Fichier vide = emplacement libre, visible seulement sur la démonstration.
+  photosReferences: [
+    ['', ''],
+    ['', ''],
+    ['', ''],
+  ] as [string, string][],
   // Autres services du garage (sans page dédiée)
   autresServices: [
     ['Lavage auto', 'Intérieur et extérieur, pour retrouver une voiture propre.', 'lavage'],
