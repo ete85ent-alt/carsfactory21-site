@@ -60,7 +60,7 @@ export const site = {
     { nom: '', logo: '' },
   ] as { nom: string; logo: string }[],
   // Photos de véhicules d'entreprises clientes : [fichier dans public/references/, légende].
-  // Fichier vide = emplacement libre, visible seulement sur la démonstration.
+  // Fichier vide = encadré vide (visible aussi sur le vrai site, en attendant la photo) ; retirer la ligne pour supprimer l'encadré.
   photosReferences: [
     ['', ''],
     ['', ''],

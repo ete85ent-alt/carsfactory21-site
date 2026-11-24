@@ -174,7 +174,8 @@ export default function Accueil() {
         </section>
 
         {/* ── Ils nous font confiance : logos (ou noms) des entreprises clientes, puis photos ;
-             les emplacements libres n'apparaissent que sur la démonstration ── */}
+             les emplacements de logo libres n'apparaissent que sur la démonstration,
+             les emplacements de photo restent visibles partout (encadrés vides, en attendant les photos) ── */}
         {(DEMO || site.references.some((r) => r.nom)) && (
           <section id="references" aria-labelledby="titre-references" className="scroll-mt-32">
             <Container className="flex flex-col gap-4 pt-10 md:gap-6 md:pt-16">
@@ -188,9 +189,9 @@ export default function Accueil() {
                   </li>
                 ))}
               </ul>
-              {(DEMO || site.photosReferences.some(([f]) => f)) && (
+              {site.photosReferences.length > 0 && (
                 <ul className="grid gap-3 sm:grid-cols-3">
-                  {site.photosReferences.filter(([f]) => DEMO || f).map(([f, legende], i) => (
+                  {site.photosReferences.map(([f, legende], i) => (
                     <li key={f || `photo-${i}`}>
                       {f ? (
                         <figure className="m-0 overflow-hidden rounded-xl border border-ligne">
@@ -198,7 +199,7 @@ export default function Accueil() {
                           {legende && <figcaption className="px-3 py-2 text-[13px] text-gris">{legende}</figcaption>}
                         </figure>
                       ) : (
-                        <div className="flex aspect-[4/3] items-center justify-center rounded-xl border-2 border-dashed border-ligne bg-fond text-[13px] text-gris">Photo à ajouter</div>
+                        <div className="flex aspect-[4/3] flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-ligne bg-fond text-[13px] text-gris"><Ico nom="photo" taille={32} className="opacity-50" />{DEMO && 'Photo à ajouter'}</div>
                       )}
                     </li>
                   ))}
