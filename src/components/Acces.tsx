@@ -37,14 +37,14 @@ function CarteLieu({ l }: { l: Lieu }) {
   )
 }
 
-/** L'adresse du garage, à Saint-Apollinaire : tout s'y fait, du dépôt de la voiture à la réparation. */
+/** L'adresse du garage, à Saint-Apollinaire. Le garage vient chercher le véhicule et le restitue. */
 export default function Acces() {
   return (
     <section id="acces" aria-labelledby="titre-acces" className="scroll-mt-20 bg-fond">
       <Container className="flex flex-col gap-10 py-16 md:py-24">
         <div id="titre-acces">
           <TitreSection label="Nous trouver" titre="Notre adresse"
-            texte="Tout se fait au garage, à Saint-Apollinaire, près des commerces et des transports en commun." />
+            texte="Le garage est à Saint-Apollinaire : on vient chercher votre véhicule et on vous le restitue une fois réparé." />
         </div>
         <CarteLieu l={accueil} />
         <p className="text-[13px] text-gris">Plans © contributeurs OpenStreetMap. Horaires : {site.horaires.filter(([j]) => j !== 'Dépannage').map(([j, h]) => `${j} ${h.toLowerCase()}`).join(' · ')}.</p>

@@ -37,7 +37,7 @@ function donneesGarage() {
 const VIDEO = {
   '@context': 'https://schema.org', '@type': 'VideoObject',
   name: 'Cars Factory 21 : le garage en une minute',
-  description: 'Carrosserie, peinture, covering, mécanique, diagnostic, flotte d’entreprise, retour de leasing, lavage, franchise prise en charge jusqu’à 450 € selon les dossiers, et deux façons de nous confier votre voiture : dépannage 24 h/24, ou dépôt au garage à Saint-Apollinaire. En dessin animé.',
+  description: 'Carrosserie, peinture, covering, mécanique, diagnostic, flotte d’entreprise, retour de leasing, lavage, franchise prise en charge jusqu’à 450 € selon les dossiers, et deux façons de nous confier votre voiture : dépannage 24 h/24, ou on vient la chercher et on vous la restitue. En dessin animé.',
   thumbnailUrl: `${site.siteUrl}/videos/presentation-garage.webp`,
   contentUrl: `${site.siteUrl}/videos/presentation-garage.mp4`,
   uploadDate: '2026-11-24',
@@ -74,14 +74,14 @@ const POINTS_FORTS: { icone: Parameters<typeof Ico>[0]['nom']; titre: string; te
 
 const ETAPES: [string, string][] = [
   ['Devis', 'Par téléphone, au garage ou en ligne avec des photos.'],
-  ['Dépôt', 'Au garage, à Saint-Apollinaire, du mardi au samedi.'],
+  ['Prise en charge', 'On vient chercher votre véhicule, du mardi au samedi.'],
   ['Réparation', 'À l’atelier, seulement les travaux validés.'],
-  ['Restitution', 'Vous récupérez votre voiture, travaux expliqués.'],
+  ['Restitution', 'On vous restitue votre voiture, travaux expliqués.'],
 ]
 
 const FAQ: [string, string][] = [
   ['Puis-je obtenir un devis sans venir au garage ?', 'Oui. Remplissez le formulaire de devis en ajoutant des photos des dégâts et le modèle de votre voiture : le garage vous recontacte pour une première estimation.'],
-  ['Où dois-je déposer ma voiture ?', 'Au garage, 6 rue de Bastogne à Saint-Apollinaire : tout se fait sur place, près des commerces et des transports en commun.'],
+  ['Dois-je amener ma voiture au garage ?', 'Non : on vient chercher votre véhicule et on vous le restitue une fois réparé. Le garage est au 6 rue de Bastogne, à Saint-Apollinaire.'],
   ['Quels sont les horaires du garage ?', 'Le garage est ouvert du mardi au samedi, de 9 h à 19 h. Il est fermé le lundi et le dimanche. Le dépannage fonctionne 24 h/24, 7 j/7.'],
   ['Le garage s’occupe-t-il des démarches avec mon assurance ?', 'Le garage vous aide à préparer votre dossier et à présenter le véhicule à l’expert si votre assurance en mandate un.'],
   ['Prenez-vous en charge la franchise ?', 'Selon les dossiers, le garage peut prendre en charge votre franchise jusqu’à 450 €. Demandez-le lors de votre devis.'],

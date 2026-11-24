@@ -60,7 +60,7 @@ function AgendaDemo() {
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2FBF62] text-white"><Ico nom="coche" taille={26} /></span>
         <p className="font-titre text-[32px] font-bold uppercase leading-none">Rendez-vous demandé</p>
         <p className="text-[17px]"><strong>{prestation}</strong> · {format(jour, { weekday: 'long', day: 'numeric', month: 'long' })} à {heure.replace(':', ' h ')}</p>
-        <p className="text-gris">Dépôt au garage : {adresseLieu(accueil)}.</p>
+        <p className="text-gris">Nous venons chercher votre véhicule et nous vous le restituons. Garage : {adresseLieu(accueil)}.</p>
         <p className="rounded-lg bg-[#FFF4F2] px-3 py-2 text-[14px] text-rouge">Démonstration : ce rendez-vous n’est pas enregistré.</p>
         <button type="button" onClick={() => { setConfirme(false); setHeure(''); setJour(null) }} className="font-semibold text-rouge underline">Choisir un autre créneau</button>
       </div>
@@ -79,7 +79,7 @@ function AgendaDemo() {
           {PRESTATIONS.filter((p) => p.chemin !== '/depannage-auto').map((p) => <option key={p.chemin}>{p.nom}</option>)}
           <option>Lavage auto</option><option>Autre demande</option>
         </select>
-        <p className="flex items-start gap-2 text-[14px] text-gris"><Ico nom="lieu" taille={18} className="mt-0.5 shrink-0 text-rouge" />Dépôt au garage, {accueil.rue}, {accueil.ville}</p>
+        <p className="flex items-start gap-2 text-[14px] text-gris"><Ico nom="voiture" taille={18} className="mt-0.5 shrink-0 text-rouge" />On vient chercher votre véhicule et on vous le restitue</p>
         <p className="flex items-start gap-2 text-[14px] text-gris"><Ico nom="horloge" taille={18} className="mt-0.5 shrink-0 text-rouge" />Mardi – samedi, 9 h – 19 h</p>
       </div>
 
@@ -137,7 +137,7 @@ export default function Rendezvous() {
     <section id="rdv" className="scroll-mt-32 bg-fond">
       <Container className="flex flex-col gap-6 py-10 md:py-16">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <TitreSection label="Rendez-vous atelier" titre="Prendre rendez-vous" texte="Choisissez la prestation, le jour et l’heure : vous déposez votre voiture au garage, à Saint-Apollinaire." />
+          <TitreSection label="Rendez-vous atelier" titre="Prendre rendez-vous" texte="Choisissez la prestation, le jour et l’heure : nous venons chercher votre véhicule et nous vous le restituons." />
           {!site.calLink && <p className="rounded-full bg-noir px-4 py-2 text-[13px] font-semibold text-white">Démonstration · tous les créneaux sont libres</p>}
         </div>
         {site.calLink ? <AgendaCal lien={site.calLink} /> : <AgendaDemo />}
