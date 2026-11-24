@@ -36,12 +36,12 @@ function donneesGarage() {
 /** La vidéo de présentation, décrite pour Google (peut apparaître dans les résultats vidéo). */
 const VIDEO = {
   '@context': 'https://schema.org', '@type': 'VideoObject',
-  name: 'Cars Factory 21 : le garage en moins d’une minute',
-  description: 'Carrosserie, peinture, covering, mécanique, diagnostic, lavage, et deux façons de nous confier votre voiture : dépannage 24 h/24, ou dépôt au garage à Saint-Apollinaire. En dessin animé.',
+  name: 'Cars Factory 21 : le garage en une minute',
+  description: 'Carrosserie, peinture, covering, mécanique, diagnostic, flotte d’entreprise, retour de leasing, lavage, franchise prise en charge jusqu’à 450 € selon les dossiers, et deux façons de nous confier votre voiture : dépannage 24 h/24, ou dépôt au garage à Saint-Apollinaire. En dessin animé.',
   thumbnailUrl: `${site.siteUrl}/videos/presentation-garage.webp`,
   contentUrl: `${site.siteUrl}/videos/presentation-garage.mp4`,
-  uploadDate: '2026-10-15',
-  duration: 'PT61S',
+  uploadDate: '2026-11-24',
+  duration: 'PT67S',
   publisher: { '@id': `${site.siteUrl}/#garage` },
 }
 
@@ -127,7 +127,7 @@ export default function Accueil() {
                 Votre navigateur ne lit pas cette vidéo. <a href={vers('/videos/presentation-garage.mp4')} className="text-rouge-vif">Télécharger la vidéo</a>.
               </video>
               <figcaption className="mt-2 flex items-baseline justify-between gap-3 text-[13px] text-white/70">
-                <span id="titre-video"><Ico nom="lecture" taille={14} className="mr-1 inline align-[-2px] text-rouge-vif" />Le garage en moins d’une minute, en dessin animé</span>
+                <span id="titre-video"><Ico nom="lecture" taille={14} className="mr-1 inline align-[-2px] text-rouge-vif" />Le garage en une minute, en dessin animé</span>
                 <span className="shrink-0 text-[11px] text-white/45">Illustrations non contractuelles</span>
               </figcaption>
             </figure>
