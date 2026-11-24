@@ -18,7 +18,7 @@ export const site = {
   // Coordonnées : OpenStreetMap (Nominatim), 30/09/2026
   lieux: [
     { id: 'accueil', titre: 'Notre garage', rue: '6 rue de Bastogne', codePostal: '21850', ville: 'Saint-Apollinaire',
-      texte: 'Vous y déposez et récupérez votre voiture, et c’est ici que se font devis et démarches. Commerces et transports en commun à proximité.',
+      texte: 'Devis, réparation, démarches : tout se fait ici, sur place. Commerces et transports en commun à proximité.',
       lat: 47.3391354, lon: 5.0720674 },
   ],
   // Agenda Cal.com du garage (ex. 'cars-factory-21/rendez-vous') : vide = agenda de démonstration

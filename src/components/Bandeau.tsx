@@ -21,7 +21,6 @@ export default function Bandeau() {
     [`Dépannage 24 h/24 et 7 j/7 · ${site.telephone}`, `tel:${site.telephoneLien}`],
     [statut, '/#acces'],
     ['Devis sur photos, sans vous déplacer', '/#devis'],
-    ['Votre garage à Saint-Apollinaire, près des transports en commun', '/#acces'],
   ]
 
   useEffect(() => {
