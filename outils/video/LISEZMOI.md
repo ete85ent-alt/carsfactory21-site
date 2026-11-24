@@ -13,3 +13,12 @@ node exporter.mjs ../../medias/presentation-cars-factory-21.mp4
 
 `node apercu.mjs 3,13,35` crée une planche d'images-clés (`planche.jpg`) pour vérifier sans tout exporter.
 Le fichier MP4 n'est pas enregistré dans l'historique du site (trop lourd).
+
+Musique de fond : composée par `musique.mjs` (aucun morceau extérieur, aucun droit à payer). Après l'export :
+
+```
+node musique.mjs musique.wav 67
+```
+
+puis l'ajouter à la vidéo avec ffmpeg (`-map 0:v -map 1:a -c:v copy -c:a aac -shortest`), pour la version complète
+(`medias/`) et la version du site (`public/videos/presentation-garage.mp4`, 1280×720).
