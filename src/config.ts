@@ -12,13 +12,12 @@ export const site = {
   telephone: '07 59 56 38 39',
   telephoneLien: '+33759563839',
   email: '[E-mail]',
-  // Seule adresse affichée sur le site, au choix du client : l'accueil de Saint-Apollinaire (ce n'est pas l'adresse de l'atelier ;
-  // on la présente toujours comme « notre accueil », jamais comme « le garage », pour ne pas créer de confusion)
+  // Adresse du garage : tout se fait à Saint-Apollinaire (accueil, atelier, dépôt et retrait des véhicules)
   adresse: { rue: '6 rue de Bastogne', codePostal: '21850', ville: 'Saint-Apollinaire', departement: 'Côte-d’Or' },
   lienItineraire: 'https://www.google.com/maps/dir/?api=1&destination=47.3391354,5.0720674',
   // Coordonnées : OpenStreetMap (Nominatim), 30/09/2026
   lieux: [
-    { id: 'accueil', titre: 'Notre accueil', rue: '6 rue de Bastogne', codePostal: '21850', ville: 'Saint-Apollinaire',
+    { id: 'accueil', titre: 'Notre garage', rue: '6 rue de Bastogne', codePostal: '21850', ville: 'Saint-Apollinaire',
       texte: 'Vous y déposez et récupérez votre voiture, et c’est ici que se font devis et démarches. Commerces et transports en commun à proximité.',
       lat: 47.3391354, lon: 5.0720674 },
   ],

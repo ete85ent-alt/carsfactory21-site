@@ -37,7 +37,7 @@ function donneesGarage() {
 const VIDEO = {
   '@context': 'https://schema.org', '@type': 'VideoObject',
   name: 'Cars Factory 21 : le garage en moins d’une minute',
-  description: 'Carrosserie, peinture, covering, mécanique, diagnostic, lavage, et deux façons de nous confier votre voiture : dépannage 24 h/24, ou dépôt à notre accueil de Saint-Apollinaire. En dessin animé.',
+  description: 'Carrosserie, peinture, covering, mécanique, diagnostic, lavage, et deux façons de nous confier votre voiture : dépannage 24 h/24, ou dépôt au garage à Saint-Apollinaire. En dessin animé.',
   thumbnailUrl: `${site.siteUrl}/videos/presentation-garage.webp`,
   contentUrl: `${site.siteUrl}/videos/presentation-garage.mp4`,
   uploadDate: '2026-10-15',
@@ -73,20 +73,20 @@ const POINTS_FORTS: { icone: Parameters<typeof Ico>[0]['nom']; titre: string; te
 ]
 
 const ETAPES: [string, string][] = [
-  ['Devis', 'Par téléphone, à l’accueil ou en ligne avec des photos.'],
-  ['Dépôt', 'À l’accueil de Saint-Apollinaire, du mardi au samedi.'],
+  ['Devis', 'Par téléphone, au garage ou en ligne avec des photos.'],
+  ['Dépôt', 'Au garage, à Saint-Apollinaire, du mardi au samedi.'],
   ['Réparation', 'À l’atelier, seulement les travaux validés.'],
   ['Restitution', 'Vous récupérez votre voiture, travaux expliqués.'],
 ]
 
 const FAQ: [string, string][] = [
   ['Puis-je obtenir un devis sans venir au garage ?', 'Oui. Remplissez le formulaire de devis en ajoutant des photos des dégâts et le modèle de votre voiture : le garage vous recontacte pour une première estimation.'],
-  ['Où dois-je déposer ma voiture ?', 'À notre accueil, 6 rue de Bastogne à Saint-Apollinaire, près des commerces et des transports en commun.'],
+  ['Où dois-je déposer ma voiture ?', 'Au garage, 6 rue de Bastogne à Saint-Apollinaire : tout se fait sur place, près des commerces et des transports en commun.'],
   ['Quels sont les horaires du garage ?', 'Le garage est ouvert du mardi au samedi, de 9 h à 19 h. Il est fermé le lundi et le dimanche. Le dépannage fonctionne 24 h/24, 7 j/7.'],
   ['Le garage s’occupe-t-il des démarches avec mon assurance ?', 'Le garage vous aide à préparer votre dossier et à présenter le véhicule à l’expert si votre assurance en mandate un.'],
   ['Prenez-vous en charge la franchise ?', 'Selon les dossiers, le garage peut prendre en charge votre franchise jusqu’à 450 €. Demandez-le lors de votre devis.'],
   ['Vous occupez-vous des véhicules d’entreprise ?', 'Oui : on s’occupe de votre flotte de véhicules (mécanique, suivi des réparations, entretien, dépannage), avec un seul interlocuteur, ainsi que la remise en état avant le retour de leasing.'],
-  ['Faut-il prendre rendez-vous ?', 'Non : on vous accueille sans rendez-vous, du mardi au samedi de 9 h à 19 h, à notre accueil de Saint-Apollinaire. Vous pouvez aussi réserver un créneau en ligne si vous préférez.'],
+  ['Faut-il prendre rendez-vous ?', 'Non : on vous accueille sans rendez-vous, du mardi au samedi de 9 h à 19 h, au garage à Saint-Apollinaire. Vous pouvez aussi réserver un créneau en ligne si vous préférez.'],
 ]
 
 export default function Accueil() {
@@ -316,7 +316,7 @@ export default function Accueil() {
         <section aria-labelledby="titre-zone" className="bg-noir text-white">
           <Container className="flex flex-col gap-4 py-10">
             <h2 id="titre-zone" className="text-[28px] font-bold uppercase leading-none md:text-[40px]">À deux pas de Dijon</h2>
-            <p className="max-w-[720px] text-[15px] text-white/70">Notre accueil à {accueil.ville} reçoit les conducteurs de toute l’agglomération et des communes voisines.</p>
+            <p className="max-w-[720px] text-[15px] text-white/70">Le garage de {accueil.ville} reçoit les conducteurs de toute l’agglomération et des communes voisines.</p>
             <ul className="flex flex-wrap gap-2">
               {site.zone.map((v) => <li key={v} className="rounded-full border border-white/20 px-3 py-1.5 text-[14px] text-white/85">{v}</li>)}
             </ul>
